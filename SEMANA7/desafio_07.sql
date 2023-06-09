@@ -43,4 +43,4 @@ INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 1
 INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 2", 1, 1);
 INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 3", 1, 1);
 INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 1", 2, 1);
-INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 2", 2, 1); --aui termina la parte de julian
+INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 2", 2, 1); --aqui termina la parte de julian
