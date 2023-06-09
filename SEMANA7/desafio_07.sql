@@ -50,8 +50,8 @@ CREATE TABLE categoria (
 CREATE TABLE articulo_categoria (
   articulo_id INT,
   categoria_id INT,
-  FOREING KEY (articulo_id) REFERENCES articulo(id),
-  FOREING KEY (categoria_id) REFERENCES categoria(id)
+  FOREIGN KEY (articulo_id) REFERENCES articulo(id),
+  FOREIGN KEY (categoria_id) REFERENCES categoria(id)
 );
 
 --Agregar el comando necesario que introduzca en la tabla usuario, 1 usuario con rol de admin, 4 con rol de colaborador y 5 con rol de público.
