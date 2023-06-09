@@ -39,8 +39,12 @@ CREATE TABLE articulo (
 
 CREATE TABLE categoria (
   id INT PRIMARY KEY AUTO_INCREMENT,
+  id_categoria INT,
   descripcion VARCHAR(100),
   imagen VARCHAR(100),
+  estado BOOLEAN,
+  PRIMARY KEY(id)
+  FOREING KEY (id_categoria) REFERENCES categoria(id)
 );
 
 CREATE TABLE articulo_categoria (
