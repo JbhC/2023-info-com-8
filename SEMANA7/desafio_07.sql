@@ -44,7 +44,7 @@ CREATE TABLE categoria (
   imagen VARCHAR(100),
   estado BOOLEAN,
   PRIMARY KEY(id)
-  FOREING KEY (id_categoria) REFERENCES categoria(id)
+  FOREIGN KEY (id_categoria) REFERENCES categoria(id)
 );
 
 CREATE TABLE articulo_categoria (
