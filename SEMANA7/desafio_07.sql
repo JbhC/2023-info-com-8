@@ -2,7 +2,7 @@ CREATE DATABASE desafio_07;
 
 USE desafio_07;
 
-CREATE TABLE IF NOT EXISTS comentario (
+CREATE TABLE comentario (
 
     id INT (25) NOT NULL AUTO_INCREMENT, 
     id_articulo INT (6),
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS comentario (
 
 ) ;
 
-CREATE TABLE IF NOT EXISTS usuario(
+CREATE TABLE usuario(
     id_usuario INT (8) NOT NULL,
     nombre VARCHAR (15),
     apellido VARCHAR (15),
