@@ -31,6 +31,25 @@ CREATE TABLE usuario(
     PRIMARY KEY (id_usuario)
 ;)
 
+CREATE TABLE articulo (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  titulo VARCHAR(100) ,
+  estado BOOLEAN
+);
+
+CREATE TABLE categoria (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  descripcion VARCHAR(100),
+  imagen VARCHAR(100),
+);
+
+CREATE TABLE articulo_categoria (
+  articulo_id INT,
+  categoria_id INT,
+  FOREIGN KEY (articulo_id) REFERENCES articulo(id),
+  FOREIGN KEY (categoria_id) REFERENCES categoria(id)
+);
+
 --Agregar el comando necesario que introduzca en la tabla usuario, 1 usuario con rol de admin, 4 con rol de colaborador y 5 con rol de público.
 -- Donde los campos: es_publico, es_colaborador y es_admin son booleanos.--
 
