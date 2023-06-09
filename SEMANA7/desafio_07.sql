@@ -11,10 +11,9 @@ CREATE TABLE comentario (
     fecha_hora TIMESTAMP,
     PRIMARY KEY (id),
     Foreign Key (id_usuario) REFERENCES (usuario),
-    Foreign Key (id_articulo) REFERENCES (articulo),
+    Foreign Key (id_articulo) REFERENCES (articulo)
 
 ) ;
-
 CREATE TABLE usuario(
     id_usuario INT (8) NOT NULL,
     nombre VARCHAR (15),
@@ -36,3 +35,12 @@ CREATE TABLE usuario(
 -- Donde los campos: es_publico, es_colaborador y es_admin son booleanos.--
 
 INSERT INTO usuario (es_admin)
+--parte de julian:- Agregar el comando necesario para listar todos los artículos que tengan
+--comentarios, mostrando el título del artículo, la fecha_publicacion del artículo, el
+--nombre del usuario que realizo el comentario y la fecha_hora que realizó dicho
+--comentario, agrupados por artículos
+INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 1", 1, 1);
+INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 2", 1, 1);
+INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 3", 1, 1);
+INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 1", 2, 1);
+INSERT INTO comentario(contenido, id_articulo, id_usuario) VALUES ("comentario 2", 2, 1); --aui termina la parte de julian
