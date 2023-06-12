@@ -80,3 +80,66 @@ class Articulo:
 
 # clase Comentario
 ## id, id_articulo, id_usuario, contenido, fecha_hora, estado
+
+#Código para elegir entre registrar usuarios o hacer login (si ya está registrado). Una vez registrado y 
+#logueado, código que permita comentar al Publico y además publicar al Colaborador
+
+
+usuarios= []  #armo una lista vacia para ir agregando los usuarios registrados
+
+while True:
+    print("¿Que desea realizar?")
+    print("1.Registrar usuario")
+    print("2.Hacer login")
+    print("3.Salir")
+
+    opcion = input("Ingrese una opcion: ")
+
+    if opcion == 1:
+        nombre = input("Ingresa tu nombre: ")
+        apellido = input("Ingresa tu apellido: ")
+        telefono = input("Ingresa tu teléfono: ")
+        username = input("Ingresa tu username: ")
+        email = input("Ingresa tu email: ")
+        contraseña = input("Ingresa tu contraseña: ")
+        usuario= Usuario(nombre,apellido,telefono,username, email, contraseña)
+        usuarios.append(usuario)  #agrego el usuario nuevo regisrado a la lista de usuarios
+
+        usuario.registrar()   #llamo al metodo registrar  
+
+    if opcion == 2:
+        usuario.login()  #llamo a la funcion login que hizo euge para que se pueda loguear
+
+        usuario_encontrado = None
+
+        for usuario in usuarios: #recorro la lista de usuarios registrados para ver si el usuario ingresado coincide con algunos de ellos
+            if usuario.username == username and usuario.contraseña == contraseña:
+                usuario_encontrado = usuario
+                break  #si coincide el sistema para directamente
+
+        if usuario_encontrado == True:
+            print("Que desea hacer?")
+            print("1. Comentar")
+            print("2. Publicar")
+
+            opcion= input("Ingrese una opcion: ")
+            if opcion == 1:
+                usuario_encontrado= Publico(usuario_encontrado)
+                usuario_encontrado.comentar()
+
+            elif opcion == 2:
+                usuario_encontrado= Colaborador(usuario_encontrado)
+                usuario_encontrado.Publicar()  ##faltaria agregar lo del articulo y comentario
+
+
+
+
+
+
+
+
+
+
+
+
+
