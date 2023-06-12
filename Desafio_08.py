@@ -2,6 +2,8 @@
 
 # Clase Usuario
 ## atributos: id, nombre, apellido, teléfono, username, email, contraseña, fecha de registro, avatar, estado, online
+
+from datetime import datetime
 class Usuario:
     def _init_ (self, id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado, online):
         self.id = id
@@ -46,9 +48,9 @@ class Publico(Usuario):
 # clase Colaborador(Usuario)
 ## atributos: es_colaborador
 class Colaborador(Usuario):
-    def __init__(self, id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado, es_publico, es_colaborador):
+    def __init__(self, id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado, es_colaborador):
         super().__init__(id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado)
-        self.es_colaborador= True
+        self.es_colaborador= es_colaborador
 ### métodos: registrar(), comentar(), publicar()
     def Comentar(self):
         if self.online == True:
