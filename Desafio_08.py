@@ -95,7 +95,7 @@ while True:
 
     opcion = input("Ingrese una opcion: ")
 
-    if opcion == 1:
+    if opcion == "1":
         nombre = input("Ingresa tu nombre: ")
         apellido = input("Ingresa tu apellido: ")
         telefono = input("Ingresa tu teléfono: ")
@@ -107,7 +107,7 @@ while True:
 
         usuario.registrar()   #llamo al metodo registrar  
 
-    elif opcion == 2:
+    elif opcion == "2":
         usuario.login()  #llamo a la funcion login que hizo euge para que se pueda loguear
 
         usuario_encontrado = None
@@ -123,15 +123,15 @@ while True:
             print("2. Publicar")
 
             opcion= input("Ingrese una opcion: ")
-            if opcion == 1:
+            if opcion == "1":
                 usuario_encontrado= Publico(usuario_encontrado)
                 usuario_encontrado.comentar()
 
-            elif opcion == 2:
+            elif opcion == "2":
                 usuario_encontrado= Colaborador(usuario_encontrado)
                 usuario_encontrado.Publicar()  ##faltaria agregar lo del articulo y comentario
 
-    elif opcion == 3:
+    elif opcion == "3":
         break
 
     else:
