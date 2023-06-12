@@ -36,15 +36,31 @@ class Publico(Usuario):
         self.es_publico = es_publico
         
     ### métodos: comentar(), registrar() -> se define en Usuario por lo que entendi(?
-    def comentar(self, articulo, comentario):
-        # definir
+    def comentar(self):
+        if self.online == True:
+            return f"El usuario {self.nombre} realizo un comentario"
+        else:
+            return f"Inicia sesion para realizar un comentario publico"
         pass #Euge
 
 # clase Colaborador(Usuario)
 ## atributos: es_colaborador
-
+class Colaborador(Usuario):
+    def __init__(self, id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado, es_publico, es_colaborador):
+        super().__init__(id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado)
+        self.es_colaborador= True
 ### métodos: registrar(), comentar(), publicar()
-
+    def Comentar(self):
+        if self.online == True:
+            return f"El Colaborador {self.nombre} ha realizado un comentario"
+        else:
+            return f"Debe iniciar sesion para realizar un comentario"
+        
+    def Publicar(self):
+        if self.online == True:
+            return f"El colaborador {self.nombre} ha realizado la publicacion de un articulo"
+        else:
+            return f"Debe registrarse o iniciar sesion para realizar una publicacion"
 
 # clase Articulo
 ## id, id_usuario, titulo, resumen, contenido, fecha_publicacion, imagen, estado
