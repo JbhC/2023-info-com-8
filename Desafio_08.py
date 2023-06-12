@@ -17,10 +17,10 @@ class Usuario:
         self.online = False #Clau
         
 ### Metodos login(), registrar()
-    def login(self, username, password): 
+    def login(self, username, contraseña): 
         self.username = input("Ingresar Username: ")
         self.contraseña = input("Ingresar Contraseña: ")
-        if username == username and password == password:
+        if username == username and contraseña == contraseña:
             self.online = True
         return f"Bienvenido/a! {self.nombre} has iniciado sesion correctamente" #Euge
     
@@ -38,7 +38,7 @@ class Publico(Usuario):
     ### métodos: comentar(), registrar() -> se define en Usuario por lo que entendi(?
     def comentar(self, articulo, comentario):
         # definir
-        pass
+        pass #Euge
 
 # clase Colaborador(Usuario)
 ## atributos: es_colaborador
