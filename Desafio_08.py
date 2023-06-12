@@ -107,7 +107,7 @@ while True:
 
         usuario.registrar()   #llamo al metodo registrar  
 
-    if opcion == 2:
+    elif opcion == 2:
         usuario.login()  #llamo a la funcion login que hizo euge para que se pueda loguear
 
         usuario_encontrado = None
@@ -131,8 +131,11 @@ while True:
                 usuario_encontrado= Colaborador(usuario_encontrado)
                 usuario_encontrado.Publicar()  ##faltaria agregar lo del articulo y comentario
 
+    elif opcion == 3:
+        break
 
-
+    else:
+        print("Opcion invalida. Ingrese un numero valido")
 
 
 
