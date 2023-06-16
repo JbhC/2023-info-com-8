@@ -33,9 +33,9 @@ class Usuario:
 # Clase Publico(Usuario)
 ## atributo: es_publico
 class Publico(Usuario):
-    def __init__(self, id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado, es_publico):
+    def __init__(self, id, nombre, apellido, telefono, username, email, contraseña):
         super().__init__(id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado)
-        self.es_publico = es_publico
+        self.es_publico = True
         
     ### métodos: comentar(), registrar() -> se define en Usuario por lo que entendi(?
     def comentar(self):
@@ -48,9 +48,9 @@ class Publico(Usuario):
 # clase Colaborador(Usuario)
 ## atributos: es_colaborador
 class Colaborador(Usuario):
-    def __init__(self, id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado, es_colaborador):
-        super().__init__(id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado)
-        self.es_colaborador= es_colaborador
+    def __init__(self, id, nombre, apellido, telefono, username, email, contraseña):
+        super().__init__(id, nombre, apellido, telefono, username, email, contraseña)
+        self.es_colaborador= True
 ### métodos: registrar(), comentar(), publicar()
     def Comentar(self):
         if self.online == True:
