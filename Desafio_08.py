@@ -20,11 +20,12 @@ class Usuario:
         
 ### Metodos login(), registrar()
     def login(self, username, contraseña): 
-        self.username = input("Ingresar Username: ")
-        self.contraseña = input("Ingresar Contraseña: ")
-        if username == username and contraseña == contraseña:
+        if username == self.username and contraseña == self.contraseña:
             self.online = True
-        return f"Bienvenido/a! {self.nombre} has iniciado sesion correctamente" #Euge
+            return f"Bienvenido/a! {self.nombre} has iniciado sesion correctamente" #Euge
+        else:
+            return f"Usuario o contraseña incorrectos"
+    
     
     def registrar(self):
       ## definir
@@ -108,7 +109,10 @@ while True:
         print(usuario.registrar())
 
     elif opcion == "2":
-        usuario.login()  #llamo a la funcion login que hizo euge para que se pueda loguear
+        username= input("Ingrese su usuario: ")
+        contraseña=input("Ingrese su contraseña: ")
+
+        usuario.login(username, contraseña)  #llamo a la funcion login que hizo euge para que se pueda loguear
 
         usuario_encontrado = None
 
@@ -136,7 +140,6 @@ while True:
 
     else:
         print("Opcion invalida. Ingrese un numero valido")
-
 
 
 
