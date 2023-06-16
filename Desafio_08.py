@@ -5,7 +5,7 @@
 
 from datetime import datetime
 class Usuario:
-    def _init_ (self, id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado, online):
+    def _init_ (self, id, nombre, apellido, telefono, username, email, contraseña):
         self.id = id
         self.nombre = nombre
         self.apellido = apellido
@@ -102,10 +102,10 @@ while True:
         username = input("Ingresa tu username: ")
         email = input("Ingresa tu email: ")
         contraseña = input("Ingresa tu contraseña: ")
-        usuario= Usuario(nombre,apellido,telefono,username, email, contraseña)
-        usuarios.append(usuario)  #agrego el usuario nuevo regisrado a la lista de usuarios
+        usuario = Usuario(len(usuarios) + 1, nombre, apellido, telefono, username, email, contraseña)
+        usuarios.append(usuario)
 
-        usuario.registrar()   #llamo al metodo registrar  
+        usuario.registrar()
 
     elif opcion == "2":
         usuario.login()  #llamo a la funcion login que hizo euge para que se pueda loguear
@@ -136,7 +136,6 @@ while True:
 
     else:
         print("Opcion invalida. Ingrese un numero valido")
-
 
 
 
