@@ -114,6 +114,11 @@ while True:
 
         print(usuario.login(username, contraseña))  #llamo a la funcion login que hizo euge para que se pueda loguear
 
+        print("¿Que desea hacer?")
+        print("1.Comentar")
+        print("2.Publicar")
+
+  
     elif opcion == "3":
         break
 
