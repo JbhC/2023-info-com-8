@@ -5,7 +5,7 @@
 
 from datetime import datetime
 class Usuario:
-    def _init_ (self, id, nombre, apellido, telefono, username, email, contraseña):
+    def __init__ (self, id, nombre, apellido, telefono, username, email, contraseña):
         self.id = id
         self.nombre = nombre
         self.apellido = apellido
@@ -34,7 +34,7 @@ class Usuario:
 ## atributo: es_publico
 class Publico(Usuario):
     def __init__(self, id, nombre, apellido, telefono, username, email, contraseña):
-        super().__init__(id, nombre, apellido, telefono, username, email, contraseña, fecha_registro, avatar, estado)
+        super().__init__(id, nombre, apellido, telefono, username, email, contraseña)
         self.es_publico = True
         
     ### métodos: comentar(), registrar() -> se define en Usuario por lo que entendi(?
@@ -105,7 +105,7 @@ while True:
         usuario = Usuario(len(usuarios) + 1, nombre, apellido, telefono, username, email, contraseña)
         usuarios.append(usuario)
 
-        usuario.registrar()
+        print(usuario.registrar())
 
     elif opcion == "2":
         usuario.login()  #llamo a la funcion login que hizo euge para que se pueda loguear
@@ -136,8 +136,6 @@ while True:
 
     else:
         print("Opcion invalida. Ingrese un numero valido")
-
-
 
 
 
