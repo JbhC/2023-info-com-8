@@ -21,7 +21,7 @@ class Usuario:
 ### Metodos login(), registrar()
     def login(self, username, contraseña): 
         if username == self.username and contraseña == self.contraseña:
-            self.online = True
+            self.online == True
             return f"Bienvenido/a! {self.nombre} has iniciado sesion correctamente" #Euge
         else:
             return f"Usuario o contraseña incorrectos"
@@ -112,35 +112,13 @@ while True:
         username= input("Ingrese su usuario: ")
         contraseña=input("Ingrese su contraseña: ")
 
-        usuario.login(username, contraseña)  #llamo a la funcion login que hizo euge para que se pueda loguear
-
-        usuario_encontrado = None
-
-        for usuario in usuarios: #recorro la lista de usuarios registrados para ver si el usuario ingresado coincide con algunos de ellos
-            if usuario.username == username and usuario.contraseña == contraseña:
-                usuario_encontrado = usuario
-                break  #si coincide el sistema para directamente
-
-        if usuario_encontrado == True:
-            print("Que desea hacer?")
-            print("1. Comentar")
-            print("2. Publicar")
-
-            opcion= input("Ingrese una opcion: ")
-            if opcion == "1":
-                usuario_encontrado= Publico(usuario_encontrado)
-                usuario_encontrado.comentar()
-
-            elif opcion == "2":
-                usuario_encontrado= Colaborador(usuario_encontrado)
-                usuario_encontrado.Publicar()  ##faltaria agregar lo del articulo y comentario
+        print(usuario.login(username, contraseña))  #llamo a la funcion login que hizo euge para que se pueda loguear
 
     elif opcion == "3":
         break
 
     else:
         print("Opcion invalida. Ingrese un numero valido")
-
 
 
 
