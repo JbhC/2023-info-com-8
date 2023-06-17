@@ -107,7 +107,7 @@ while True:
         usuario = Usuario(len(usuarios) + 1, nombre, apellido, telefono, username, email, contraseña)
         usuarios.append(usuario)
 
-        print(f"\n{usuario.registrar()}")
+        print(f"\n{usuario.registrar()}\n")
 
     elif opcion == "2":
         username= input("Ingrese su usuario: ")
