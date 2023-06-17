@@ -28,6 +28,7 @@ class Usuario:
     
     
     def registrar(self):
+
         return f"Hola! {self.nombre} te has registrado correctamente!" #Clau
 
 # Clase Publico(Usuario)
@@ -43,7 +44,7 @@ class Publico(Usuario):
             return f"El usuario {self.nombre} realizo un comentario"
         else:
             return f"Inicia sesion para realizar un comentario publico"
-        pass #Euge
+        #Euge
 
 # clase Colaborador(Usuario)
 ## atributos: es_colaborador
@@ -88,12 +89,13 @@ class Articulo:
 usuarios= []  #armo una lista vacia para ir agregando los usuarios registrados
 
 while True:
-    print("¿Que desea realizar?")
+    print("\n----¡Bienvenido/a!----\n")
+    print("¿Que desea realizar?\n")
     print("1.Registrar usuario")
     print("2.Hacer login")
     print("3.Salir")
 
-    opcion = input("Ingrese una opcion: ")
+    opcion = input("\nIngrese una opcion: ")
 
     if opcion == "1":
         nombre = input("Ingresa tu nombre: ")
@@ -105,24 +107,34 @@ while True:
         usuario = Usuario(len(usuarios) + 1, nombre, apellido, telefono, username, email, contraseña)
         usuarios.append(usuario)
 
-        print(usuario.registrar())
+        print(f"\n{usuario.registrar()}")
 
     elif opcion == "2":
         username= input("Ingrese su usuario: ")
         contraseña=input("Ingrese su contraseña: ")
 
-        print(usuario.login(username, contraseña))  #llamo a la funcion login que hizo euge para que se pueda loguear
+        print(f"\n{usuario.login(username, contraseña)}\n")  #llamo a la funcion login que hizo euge para que se pueda loguear
 
         print("¿Que desea hacer?")
         print("1.Comentar")
         print("2.Publicar")
 
-  
+        accion = input("Ingrese una opcion: ")
+        if accion == "1" and isinstance(usuario, Publico):
+            print(usuario.comentar())
+
+        elif accion == "2" and isinstance(usuario, Colaborador):
+            print(usuario.Publicar())
+
+        else:
+            print("Accion invalida. Intente nuevamente")
+
     elif opcion == "3":
         break
 
     else:
         print("Opcion invalida. Ingrese un numero valido")
+
 
 
 
