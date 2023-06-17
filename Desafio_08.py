@@ -119,7 +119,7 @@ while True:
     print("\n----¡Bienvenido/a!----\n")
     print("¿Que desea realizar?\n")
     print("1.Registrar usuario")
-    print("2.Hacer login")
+    print("2.Iniciar sesion")
     print("3.Salir")
 
     opcion = input("\nIngrese una opcion: ")
