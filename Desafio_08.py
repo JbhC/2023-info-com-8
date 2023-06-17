@@ -145,8 +145,7 @@ while True:
             print("Ya te has registrado anteriormente")
 
 
-    elif opcion == "2":
-        if not usuario.online:
+        elif opcion == "2":
             username= input("Ingrese su usuario: ")
             ontraseña=input("Ingrese su contraseña: ")
 
@@ -156,9 +155,6 @@ while True:
             print("1.Comentar")
             print("2.Publicar")
 
-        else:
-            if usuario.online:
-                print("Ya has iniciado sesion anteriormente")
 
     elif opcion == "3":
         break
