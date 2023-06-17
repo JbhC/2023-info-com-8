@@ -28,7 +28,6 @@ class Usuario:
     
     
     def registrar(self):
-      ## definir
         return f"Hola! {self.nombre} te has registrado correctamente!" #Clau
 
 # Clase Publico(Usuario)
