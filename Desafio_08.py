@@ -15,7 +15,7 @@ class Usuario:
         self.contraseña = contraseña
         self.fecha_registro = datetime.now()
         self.avatar = None
-        self.estado = "Activo"
+        self.estado = "Inactivo"
         self.online = False #Clau
         
 ### Metodos login(), registrar()
@@ -28,8 +28,8 @@ class Usuario:
     
     
     def registrar(self):
-        if self.estado == "Inactivo":
-            return f"Hola! {self.nombre} te has registrado correctamente!" #Clau
+        return f"Hola! {self.nombre} te has registrado correctamente!" #Clau
+
     
     def cambiar_estado(self, estado):
         self.estado = estado
@@ -137,26 +137,21 @@ while True:
         usuario = Usuario(len(usuarios) + 1, nombre, apellido, telefono, username, email, contraseña)
         usuarios.append(usuario)
 
-        if usuario.estado == "Inactivo":
-            usuario.cambiar_estado("Activo")
-            print(f"\n{usuario.registrar()}\n")
+        usuario.cambiar_estado("Activo")
 
-        else:
-            print("Ya te has registrado anteriormente")
+        print(f"\n{usuario.registrar()}\n")
 
 
-        elif opcion == "2":
+    elif opcion == "2":
             username= input("Ingrese su usuario: ")
             ontraseña=input("Ingrese su contraseña: ")
-
-            print(f"\n{usuario.login(username, contraseña)}\n")  #llamo a la funcion login que hizo euge para que se pueda loguear
-        
-            print("¿Que desea hacer?")
-            print("1.Comentar")
-            print("2.Publicar")
-
+            if usuario.online == False:
+                print(f"\n{usuario.login(username, contraseña)}\n")  #llamo a la funcion login que hizo euge para que se pueda loguear
+            else:
+                print("Ya has iniciado sesion")
 
     elif opcion == "3":
         break
     else:
         print("Opcion invalida. Ingrese un numero valido")
+
