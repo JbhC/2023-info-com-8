@@ -28,8 +28,11 @@ class Usuario:
     
     
     def registrar(self):
-
-        return f"Hola! {self.nombre} te has registrado correctamente!" #Clau
+        if self.estado == "Inactivo":
+            return f"Hola! {self.nombre} te has registrado correctamente!" #Clau
+    
+    def cambiar_estado(self, estado):
+        self.estado = estado
 
 # Clase Publico(Usuario)
 ## atributo: es_publico
@@ -101,7 +104,7 @@ class Comentario:
 
     def cambiar_estado(self, nuevo_estado): #para cambiar de estado de arctivo a inactivo
         self.estado = nuevo_estado   #lo hizo julian
-        
+
 
 #prueba
 # mi_comentario = Comentario(1, 1, 1, "este codigo esta masomenos echo, con el resto del codigo de mis compañeros quedaria mas completo")
@@ -134,31 +137,30 @@ while True:
         usuario = Usuario(len(usuarios) + 1, nombre, apellido, telefono, username, email, contraseña)
         usuarios.append(usuario)
 
-        print(f"\n{usuario.registrar()}\n")
-
-    elif opcion == "2":
-        username= input("Ingrese su usuario: ")
-        contraseña=input("Ingrese su contraseña: ")
-
-        print(f"\n{usuario.login(username, contraseña)}\n")  #llamo a la funcion login que hizo euge para que se pueda loguear
-
-        print("¿Que desea hacer?")
-        print("1.Comentar")
-        print("2.Publicar")
-
-        accion = input("Ingrese una opcion: ")
-        if accion == "1" and isinstance(usuario, Publico):
-            print(usuario.comentar())
-
-        elif accion == "2" and isinstance(usuario, Colaborador):
-            print(usuario.Publicar())
+        if usuario.estado == "Inactivo":
+            usuario.cambiar_estado("Activo")
+            print(f"\n{usuario.registrar()}\n")
 
         else:
-            print("Accion invalida. Intente nuevamente")
+            print("Ya te has registrado anteriormente")
+
+
+    elif opcion == "2":
+        if not usuario.online:
+            username= input("Ingrese su usuario: ")
+            ontraseña=input("Ingrese su contraseña: ")
+
+            print(f"\n{usuario.login(username, contraseña)}\n")  #llamo a la funcion login que hizo euge para que se pueda loguear
+        
+            print("¿Que desea hacer?")
+            print("1.Comentar")
+            print("2.Publicar")
+
+        else:
+            if usuario.online:
+                print("Ya has iniciado sesion anteriormente")
 
     elif opcion == "3":
         break
-
     else:
         print("Opcion invalida. Ingrese un numero valido")
-
