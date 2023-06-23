@@ -144,7 +144,7 @@ while True:
 
     elif opcion == "2":
             username= input("Ingrese su usuario: ")
-            ontraseña=input("Ingrese su contraseña: ")
+            contraseña=input("Ingrese su contraseña: ")
             if usuario.online == False:
                 print(f"\n{usuario.login(username, contraseña)}\n")  #llamo a la funcion login que hizo euge para que se pueda loguear
             else:
