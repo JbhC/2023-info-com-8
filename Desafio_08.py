@@ -1,8 +1,4 @@
-# Crear las siguientes clases con sus atributos y métodos.
-
-# Clase Usuario
-## atributos: id, nombre, apellido, teléfono, username, email, contraseña, fecha de registro, avatar, estado, online
-
+#Crear clase "padre" Usuario con los atributos solicitados:#Clau
 from datetime import datetime
 class Usuario:
     def __init__ (self, id, nombre, apellido, telefono, username, email, contraseña):
@@ -16,81 +12,84 @@ class Usuario:
         self.fecha_registro = datetime.now()
         self.avatar = None
         self.estado = "Inactivo"
-        self.online = False #Clau
-        
-### Metodos login(), registrar()
+        self.online = False
+#Crea metodos de  la clase Usuario:#Euge #Clau
     def login(self, username, contraseña): 
         if username == self.username and contraseña == self.contraseña:
-            self.online == True
-            return f"Bienvenido/a! {self.nombre} has iniciado sesion correctamente" #Euge
+            self.online = True
+            return f"Bienvenido/a! {self.nombre} has iniciado sesion correctamente"
         else:
             return f"Usuario o contraseña incorrectos"
     
-    
     def registrar(self):
-        return f"Hola! {self.nombre} te has registrado correctamente!" #Clau
-
+        return f"Hola! {self.nombre} te has registrado correctamente!"
     
     def cambiar_estado(self, estado):
-        self.estado = estado
+        self.estado = estado #No lo pide la actividad pero permite que el usuario cambie su estado.
 
-# Clase Publico(Usuario)
-## atributo: es_publico
+#Se crea clase "hijo" Publico la cual hereda de Usuario y se le agrega un atributo y un metodo #Euge
 class Publico(Usuario):
     def __init__(self, id, nombre, apellido, telefono, username, email, contraseña):
         super().__init__(id, nombre, apellido, telefono, username, email, contraseña)
         self.es_publico = True
         
-    ### métodos: comentar(), registrar() -> se define en Usuario por lo que entendi(?
-    def comentar(self):
+    def comentar(self):#Metodo que simula la accion de comentar un articulo tomando como condicional que el Usuario este online
         if self.online == True:
             return f"El usuario {self.nombre} realizo un comentario"
         else:
-            return f"Inicia sesion para realizar un comentario publico"
-        #Euge
-
-# clase Colaborador(Usuario)
-## atributos: es_colaborador
+            return f"Inicia sesion para realizar un comentario."
+       
+#Se crea otra clase "hijo de Usuario" la cual suma un atributo y dos  metodos en comparacion a usuario     
 class Colaborador(Usuario):
     def __init__(self, id, nombre, apellido, telefono, username, email, contraseña):
         super().__init__(id, nombre, apellido, telefono, username, email, contraseña)
         self.es_colaborador= True
-### métodos: registrar(), comentar(), publicar()
-    def Comentar(self):
+
+    def comentar(self):
         if self.online == True:
             return f"El Colaborador {self.nombre} ha realizado un comentario"
         else:
             return f"Debe iniciar sesion para realizar un comentario"
         
-    def Publicar(self):
+    def publicar(self):
         if self.online == True:
             return f"El colaborador {self.nombre} ha realizado la publicacion de un articulo"
         else:
             return f"Debe registrarse o iniciar sesion para realizar una publicacion"
 
-# clase Articulo
-## id, id_usuario, titulo, resumen, contenido, fecha_publicacion, imagen, estado
+#Se define clase articulo con los atributos que pide la actividad #Euge
 class Articulo:
-    def __init__(self, id, id_usuario, titulo, resumen, contenido, fecha_publicacion, imagen, estado):
+    def __init__(self, id, id_usuario, titulo, resumen, contenido, imagen, estado):
         self.id = id
         self.id_usuario = id_usuario
         self.titulo = titulo
         self.resumen = resumen
         self.contenido = contenido
-        self.fecha_publicacion = fecha_publicacion
+        self.fecha_publicacion = datetime.now()
         self.imagen = imagen
-        self.estado = estado #Euge
+        self.estado = "activo"
 
+    def mostrar_atributos(self):
+        fecha_hora_formateada = self.fecha_publicacion.strftime("%Y-%m-%d %H:%M")
+        print("id de articulo: ", self.id)
+        print("id de usuario: ", self.id_usuario)
+        print("ARticulo: ", self.contenido)
+        print("fecha y hora del comentario: ", fecha_hora_formateada)
+        print("estado: ", self.estado)
 
-# clase Comentario
-## id, id_articulo, id_usuario, contenido, fecha_hora, estado
+    def cambiar_estado(self, nuevo_estado):
+        self.estado = nuevo_estado   
+
+    
+
+#Se define clase Comentario con los atributos que pide la actividad #Euge#julian
 class Comentario:
     def __init__(self, id, id_articulo, id_usuario, contenido):
         self.id = id
         self.id_articulo = id_articulo
         self.id_usuario = id_usuario
         self.contenido = contenido
-        self.fecha_hora = datetime.now() #no la espesifico arriba para que de esta forma tome la fecha y hora en la que se ejecuta
+        self.fecha_hora = datetime.now()
         self.estado = "activo"
 
     def mostrar_atributos(self):
@@ -102,30 +101,24 @@ class Comentario:
         print("fecha y hora del comentario: ", fecha_hora_formateada)
         print("estado: ", self.estado)
 
-    def cambiar_estado(self, nuevo_estado): #para cambiar de estado de arctivo a inactivo
-        self.estado = nuevo_estado   #lo hizo julian
-
-
-#prueba
-# mi_comentario = Comentario(1, 1, 1, "este codigo esta masomenos echo, con el resto del codigo de mis compañeros quedaria mas completo")
-# mi_comentario.mostrar_atributos()
+    def cambiar_estado(self, nuevo_estado):
+        self.estado = nuevo_estado   
 
 
 
-#Código para elegir entre registrar usuarios o hacer login (si ya está registrado). Una vez registrado y 
-#logueado, código que permita comentar al Publico y además publicar al Colaborador
 
-
-usuarios= []  #armo una lista vacia para ir agregando los usuarios registrados
+usuarios = {}
 
 while True:
     print("\n----¡Bienvenido/a!----\n")
-    print("¿Que desea realizar?\n")
-    print("1.Registrar usuario")
-    print("2.Iniciar sesion")
-    print("3.Salir")
+    print("¿Qué desea realizar?\n")
+    print("1. Registrar usuario")
+    print("2. Iniciar sesión")
+    print("3. Comentar (solo para el público)")
+    print("4. Publicar (solo para colaboradores)")
+    print("5. Salir")
 
-    opcion = input("\nIngrese una opcion: ")
+    opcion = input("\nIngrese una opción: ")
 
     if opcion == "1":
         nombre = input("Ingresa tu nombre: ")
@@ -134,24 +127,58 @@ while True:
         username = input("Ingresa tu username: ")
         email = input("Ingresa tu email: ")
         contraseña = input("Ingresa tu contraseña: ")
-        usuario = Usuario(len(usuarios) + 1, nombre, apellido, telefono, username, email, contraseña)
-        usuarios.append(usuario)
 
+        print("Selecciona el tipo de registro:")
+        print("1. Publico")
+        print("2. Colaborador")
+        tipo_registro = input("Ingrese una opción: ")
+
+        if tipo_registro == "1":
+            usuario = Publico(len(usuarios) + 1, nombre, apellido, telefono, username, email, contraseña)
+        elif tipo_registro == "2":
+            usuario = Colaborador(len(usuarios) + 1, nombre, apellido, telefono, username, email, contraseña)
+        else:
+            print("Opción inválida. Registro cancelado.")
+            continue
+
+        usuarios[username] = usuario
         usuario.cambiar_estado("Activo")
-
         print(f"\n{usuario.registrar()}\n")
 
-
     elif opcion == "2":
-            username= input("Ingrese su usuario: ")
-            contraseña=input("Ingrese su contraseña: ")
-            if usuario.online == False:
-                print(f"\n{usuario.login(username, contraseña)}\n")  #llamo a la funcion login que hizo euge para que se pueda loguear
+        username = input("Ingrese su usuario: ")
+        contraseña = input("Ingrese su contraseña: ")
+        
+        if username in usuarios:
+            usuario = usuarios[username]
+            if not usuario.online:
+                print(f"\n{usuario.login(username, contraseña)}\n")
             else:
-                print("Ya has iniciado sesion")
+                print("Ya has iniciado sesión")
+        else:
+            print("Usuario no encontrado")
 
     elif opcion == "3":
+        if username in usuarios:
+            usuario = usuarios[username]
+            if isinstance(usuario, Publico) or isinstance(usuario, Colaborador) :
+                print(usuario.comentar())
+            else:
+                print("Acción no permitida para tu tipo de usuario.")
+        else:
+            print("Debe iniciar sesión primero.")
+
+    elif opcion == "4":
+        if username in usuarios:
+            usuario = usuarios[username]
+            if isinstance(usuario, Colaborador):
+                print(usuario.publicar())
+            else:
+                print("Acción no permitida para tu tipo de usuario.")
+        else:
+            print("Debe iniciar sesión primero.")
+
+    elif opcion == "5":
         break
     else:
-        print("Opcion invalida. Ingrese un numero valido")
-
+        print("Opción inválida. Ingrese un número válido")
