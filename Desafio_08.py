@@ -114,7 +114,7 @@ while True:
     print("¿Qué desea realizar?\n")
     print("1. Registrar usuario")
     print("2. Iniciar sesión")
-    print("3. Comentar (solo para el público)")
+    print("3. Comentar")
     print("4. Publicar (solo para colaboradores)")
     print("5. Salir")
 
