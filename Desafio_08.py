@@ -59,7 +59,7 @@ class Colaborador(Usuario):
 
 #Se define clase articulo con los atributos que pide la actividad #Euge
 class Articulo:
-    def __init__(self, id, id_usuario, titulo, resumen, contenido, imagen, estado):
+    def __init__(self, id, id_usuario, titulo, resumen, contenido, imagen):
         self.id = id
         self.id_usuario = id_usuario
         self.titulo = titulo
@@ -128,7 +128,7 @@ while True:
         email = input("Ingresa tu email: ")
         contraseña = input("Ingresa tu contraseña: ")
 
-        print("Selecciona el tipo de registro:")
+        print("\nSelecciona el tipo de registro:\n")
         print("1. Publico")
         print("2. Colaborador")
         tipo_registro = input("Ingrese una opción: ")
@@ -158,11 +158,17 @@ while True:
         else:
             print("Usuario no encontrado")
 
-    elif opcion == "3":
+    elif opcion == "3":          
         if username in usuarios:
             usuario = usuarios[username]
             if isinstance(usuario, Publico) or isinstance(usuario, Colaborador) :
+                id = input("Ingrese el id de su comentario: ")
+                id_articulo = input("Ingrese el id del articulo a comentar: ")
+                id_usuario = input("Ingrese su id de usuario Publico: ")
+                contenido = input("Ingrese el contenido de su Comentario: ")
+                comentario = Comentario(id, id_articulo, id_usuario, contenido)
                 print(usuario.comentar())
+                print(f"al articulo {comentario.id_articulo} el mismo dice {comentario.contenido}")
             else:
                 print("Acción no permitida para tu tipo de usuario.")
         else:
@@ -172,7 +178,15 @@ while True:
         if username in usuarios:
             usuario = usuarios[username]
             if isinstance(usuario, Colaborador):
+                id = input("Ingrese el id de su articulo: ")
+                id_usuario = input("Ingrese su id de usuario Colaborador: ")
+                titulo = input("Ingrese el titulo de su articulo: ")
+                resumen = input("Ingrese el resumen de su articulo: ")
+                contenido = input("Ingrese el contenido de su articulo: ")
+                imagen = input("Ingrese la imagen de su articulo: ")
+                articulo = Articulo(id, id_usuario, titulo, resumen, contenido, imagen)
                 print(usuario.publicar())
+                print(f"El contenido del articulo es {articulo.resumen}")
             else:
                 print("Acción no permitida para tu tipo de usuario.")
         else:
@@ -182,3 +196,7 @@ while True:
         break
     else:
         print("Opción inválida. Ingrese un número válido")
+
+
+
+
